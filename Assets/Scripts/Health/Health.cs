@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private float startingHealth;
-    private float currentHealth;
+    [SerializeField] private float startingHealth;
+    public float currentHealth {  get; private set; }
+    private Animator anim;
 
   
     private void Awake()
@@ -24,6 +25,11 @@ public class Health : MonoBehaviour
         else
         {
             //player dead
+            GetComponent<PlayerMoviment>().enabled = false;
         }
+    }
+    public void AddHealth(float _value)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
     }
 }
