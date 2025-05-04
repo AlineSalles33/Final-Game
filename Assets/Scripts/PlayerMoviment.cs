@@ -8,10 +8,12 @@ public class PlayerMoviment : MonoBehaviour
     private Rigidbody2D body;
     private bool grounded;
     private bool plataform;
+    private SpriteRenderer sprite;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -23,6 +25,15 @@ public class PlayerMoviment : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && plataform)
             Jump();
+
+        if (body.velocity.x < 0f)
+        {
+            sprite.flipX = true;
+        }
+        if (body.velocity.x > 0f)
+        {
+            sprite.flipX = false;
+        }
     }
 
     private void Jump()
