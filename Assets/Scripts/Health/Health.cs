@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Health : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
@@ -32,4 +33,9 @@ public class Health : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
     }
+
+    //public void Respawn()
+    //{
+       // AddHealth(startingHealth);
+    //}
 }
