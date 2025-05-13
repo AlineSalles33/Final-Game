@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
 
 public class PlayerMoviment : MonoBehaviour
 {
@@ -9,6 +11,9 @@ public class PlayerMoviment : MonoBehaviour
     private bool grounded;
     private bool plataform;
     private SpriteRenderer sprite;
+
+    private int flowerCounter = 0;
+    public TMP_Text counterText;
 
     private void Awake()
     {
@@ -52,5 +57,19 @@ public class PlayerMoviment : MonoBehaviour
 
         if (collision.gameObject.tag == "FloatingPlataform")
             plataform = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground"))
+        {
+            grounded = true;
+        }
+        else if (collision.CompareTag("Flower") && collision.gameObject.activeSelf == true)
+        {
+            collision.gameObject.SetActive(false);
+            flowerCounter += 1;
+            counterText.text = "Flowes: " + flowerCounter;
+        }
     }
 }
