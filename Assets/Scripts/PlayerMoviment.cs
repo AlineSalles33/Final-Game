@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PlayerMoviment : MonoBehaviour
@@ -14,6 +15,8 @@ public class PlayerMoviment : MonoBehaviour
 
     private int flowerCounter = 0;
     public TMP_Text counterText;
+
+    public TextMeshProUGUI WINTEXT;
 
     private void Awake()
     {
@@ -61,6 +64,12 @@ public class PlayerMoviment : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "Win")
+        {
+            WINTEXT.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+
         if (collision.CompareTag("Ground"))
         {
             grounded = true;

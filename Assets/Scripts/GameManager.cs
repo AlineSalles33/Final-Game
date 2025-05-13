@@ -33,4 +33,9 @@ public class GameManager : MonoBehaviour
         // Do any death logic here (animation, sounds, etc.)
         FindObjectOfType<GameManager>().GameOver();
     }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
