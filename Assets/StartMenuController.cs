@@ -7,6 +7,7 @@ public class StartMenuController : MonoBehaviour
 {
     public void OnStartClick () 
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Level1");
     }
 
